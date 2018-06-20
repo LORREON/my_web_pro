@@ -6,6 +6,7 @@
 
     <display-name>MyWebPro</display-name>
 
+
     <servlet>
         <servlet-name>userServlet</servlet-name>
         <servlet-class>ua.my.progect.web.UserServlet</servlet-class>
@@ -15,5 +16,22 @@
         <servlet-name>userServlet</servlet-name>
         <url-pattern>/users</url-pattern>
     </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>pageServlet</servlet-name>
+        <servlet-class>ua.my.progect.web.PageServlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>pageServlet</servlet-name>
+        <url-pattern>/pages</url-pattern>
+    </servlet-mapping>
+
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+
+
 
 </web-app>

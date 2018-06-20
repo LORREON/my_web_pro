@@ -3,16 +3,29 @@ package ua.my.progect.model;
 import java.time.LocalDateTime;
 
 public class Page {
-    private String pageName;
-    private String userName;
-    private LocalDateTime pageDateTime;
-    private String text;
+    protected Integer id;
+    protected String pageName;
+    protected String userName;
+    protected LocalDateTime pageDateTime;
+    protected String text;
 
-    public Page(String pageName, String userName, LocalDateTime pageDateTime, String text) {
+    public Page(Integer id, String pageName, String userName, LocalDateTime pageDateTime, String text) {
+        this.id = id;
         this.pageName = pageName;
         this.userName = userName;
         this.pageDateTime = pageDateTime;
         this.text = text;
+    }
+
+    public Page() {
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getPageName() {
@@ -46,6 +59,12 @@ public class Page {
     public void setText(String text) {
         this.text = text;
     }
+
+    public boolean isNew(){
+        return id == null;
+    }
+
+
 
     @Override
     public String toString() {

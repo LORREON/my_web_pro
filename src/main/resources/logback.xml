@@ -5,7 +5,7 @@
     <jmxConfigurator/>
 
     <appender name="file" class="ch.qos.logback.core.FileAppender">
-        <file>${MY_WEB_PRO}/log/topjava.log</file>
+        <file>${MY_WEB_ROOT}/log/topjava.log</file>
 
         <encoder>
             <charset>UTF-8</charset>
