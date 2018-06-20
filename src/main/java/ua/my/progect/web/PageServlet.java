@@ -2,8 +2,6 @@ package ua.my.progect.web;
 
 import org.slf4j.Logger;
 import ua.my.progect.model.Page;
-import ua.my.progect.repository.InMemoryUserPages;
-import ua.my.progect.repository.UserPageRepository;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;

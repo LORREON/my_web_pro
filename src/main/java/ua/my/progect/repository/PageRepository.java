@@ -4,7 +4,7 @@ import ua.my.progect.model.Page;
 
 import java.util.Collection;
 
-public interface UserPageRepository {
+public interface PageRepository {
     Page save(Page page);
 
     void delete(int id);

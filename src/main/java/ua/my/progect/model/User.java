@@ -1,46 +1,69 @@
 package ua.my.progect.model;
 
-import java.time.LocalDateTime;
+import java.util.Date;
+import java.util.EnumSet;
+import java.util.Set;
 
-public class User {
-    private  final String userName;
+public class User extends AbstractNamedEntity {
 
-    private final String pass;
+    private String email;
 
-    private final LocalDateTime dateTime;
+    private String password;
 
-    private final String description;
+    private boolean enabled = true;
 
-    public User(String userName, String pass, LocalDateTime dateTime, String description) {
-        this.userName = userName;
-        this.pass = pass;
-        this.dateTime = dateTime;
-        this.description = description;
+    private Date registered = new Date();
+
+    private Set<Role> roles;
+
+
+    public User(Integer id, String name, String email, String password, Role role, Role... roles) {
+        this(id, name, email, password, true, EnumSet.of(role, roles));
     }
 
-    public String getUserName() {
-        return userName;
+    public User(Integer id, String name, String email, String password, boolean enabled, Set<Role> roles) {
+        super(id, name);
+        this.email = email;
+        this.password = password;
+        this.enabled = enabled;
+        this.roles = roles;
     }
 
-    public String getPass() {
-        return pass;
+    public String getEmail() {
+        return email;
     }
 
-    public LocalDateTime getDateTime() {
-        return dateTime;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getDescription() {
-        return description;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "userName='" + userName + '\'' +
-                ", pass='" + pass + '\'' +
-                ", dateTime=" + dateTime +
-                ", description='" + description + '\'' +
-                '}';
+    public Date getRegistered() {
+        return registered;
     }
+
+    public void setRegistered(Date registered) {
+        this.registered = registered;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+
 }
