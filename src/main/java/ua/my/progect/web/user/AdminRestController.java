@@ -2,10 +2,12 @@ package ua.my.progect.web.user;
 
 
 
+import org.springframework.stereotype.Controller;
 import ua.my.progect.model.User;
 
 import java.util.List;
 
+@Controller
 public class AdminRestController extends AbstractUserController {
 
     @Override

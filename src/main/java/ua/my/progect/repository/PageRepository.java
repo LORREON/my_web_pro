@@ -2,14 +2,14 @@ package ua.my.progect.repository;
 
 import ua.my.progect.model.Page;
 
-import java.util.Collection;
+import java.util.List;
 
 public interface PageRepository {
-    Page save(Page page);
+    Page save(Page page, int userId);
 
-    void delete(int id);
+    boolean delete(int id, int userId);
 
-    Page get(int id);
+    Page get(int id, int userId);
 
-    Collection<Page> getAll();
+    List<Page> getAll(int userId);
 }

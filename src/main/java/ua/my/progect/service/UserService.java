@@ -1,4 +1,4 @@
-package ua.my.progect.servise;
+package ua.my.progect.service;
 
 
 import ua.my.progect.model.User;

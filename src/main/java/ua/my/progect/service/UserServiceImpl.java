@@ -1,6 +1,8 @@
-package ua.my.progect.servise;
+package ua.my.progect.service;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import ua.my.progect.model.User;
 import ua.my.progect.repository.UserRepository;
 import ua.my.progect.util.exception.NotFoundException;
@@ -10,8 +12,10 @@ import java.util.List;
 import static ua.my.progect.util.ValidationUtil.checkNotFound;
 import static ua.my.progect.util.ValidationUtil.checkNotFoundWithId;
 
+@Service
 public class UserServiceImpl implements UserService {
 
+    @Autowired
     private UserRepository repository;
 
     @Override

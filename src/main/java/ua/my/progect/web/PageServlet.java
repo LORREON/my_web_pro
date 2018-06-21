@@ -1,7 +1,10 @@
 package ua.my.progect.web;
 
 import org.slf4j.Logger;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import ua.my.progect.model.Page;
+import ua.my.progect.web.page.PageRestController;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -12,17 +15,23 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-import static org.slf4j.LoggerFactory.getLogger;
 
 public class PageServlet extends HttpServlet {
-    private static final Logger log = getLogger(PageServlet.class);
 
-    private UserPageRepository repository;
+    private ConfigurableApplicationContext springContext;
+    private PageRestController pageController;
 
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
-        repository = new InMemoryUserPages();
+        springContext = new ClassPathXmlApplicationContext("spring/spring-app.xml");
+        pageController = springContext.getBean(PageRestController.class);
+    }
+
+    @Override
+    public void destroy() {
+        springContext.close();
+        super.destroy();
     }
 
 
@@ -30,27 +39,25 @@ public class PageServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String action = request.getParameter("action");
-
         switch (action == null ? "all" : action) {
             case "delete":
                 int id = getId(request);
-                log.info("Delete {}", id);
-                repository.delete(id);
+                pageController.delete(id);
                 response.sendRedirect("pages");
                 break;
             case "create":
             case "update":
                 final Page npage = "create".equals(action) ?
                         new Page(null, "new Page", "user", LocalDateTime.now(), "new text") :
-                        repository.get(getId(request));
+                        pageController.get(getId(request));
                 request.setAttribute("npage", npage);
                 request.getRequestDispatcher("/pageForm.jsp").forward(request, response);
                 System.out.println(npage.toString());
                 break;
             case "all":
             default:
-                log.info("getAll");
-                request.setAttribute("pageList", repository.getAll());
+                pageController.getAll().forEach(System.out::println);
+                request.setAttribute("pageList", pageController.getAll());
                 request.getRequestDispatcher("/pages.jsp").forward(request, response);
                 break;
         }
@@ -66,9 +73,7 @@ public class PageServlet extends HttpServlet {
                 req.getParameter("userName"),
                 LocalDateTime.parse(req.getParameter("pageDateTime")),
                 req.getParameter("text"));
-
-        log.info(page.isNew() ? "Create {}" : "Update {}", page);
-        repository.save(page);
+        pageController.update(page, getId(req));
         resp.sendRedirect("pages");
     }
 
