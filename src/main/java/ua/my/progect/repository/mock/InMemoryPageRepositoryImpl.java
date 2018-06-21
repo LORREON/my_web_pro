@@ -69,7 +69,7 @@ public class InMemoryPageRepositoryImpl implements PageRepository {
         return page == null ?
                 Stream.empty() :
                 page.values().stream()
-                        .sorted(Comparator.comparing(Page::getDateTime).reversed());
+                        .sorted(Comparator.comparing(Page::getPageDateTime).reversed());
     }
 }
 

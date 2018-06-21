@@ -3,7 +3,7 @@ package ua.my.progect.web.user;
 
 import org.springframework.stereotype.Controller;
 import ua.my.progect.model.User;
-import ua.my.progect.web.AuthorizedUser;
+import ua.my.progect.AuthorizedUser;
 
 @Controller
 public class ProfileRestController extends AbstractUserController {

@@ -7,11 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import ua.my.progect.model.Page;
 import ua.my.progect.service.PageService;
-import ua.my.progect.web.AuthorizedUser;
+import ua.my.progect.AuthorizedUser;
 
-import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 import static ua.my.progect.util.ValidationUtil.assureIdConsistent;
@@ -43,23 +41,19 @@ public class PageRestController {
     public List<Page> getAll() {
         int userId = AuthorizedUser.id();
         log.info("getAll for user {}", userId);
-
-        List<Page> pageList = service.getAll(userId).stream().collect(Collectors.toList());
-        pageList.forEach(a-> System.out.println(a));
-
         return service.getAll(userId);
     }
 
     public Page create(Page page) {
         int userId = AuthorizedUser.id();
-        checkNew(page);
+        //checkNew(page);
         log.info("create {} for user {}", page, userId);
         return service.create(page, userId);
     }
 
     public void update(Page page, int id) {
         int userId = AuthorizedUser.id();
-        assureIdConsistent(page, id);
+        //assureIdConsistent(page, id);
         log.info("update {} for user {}", page, userId);
         service.update(page, userId);
     }

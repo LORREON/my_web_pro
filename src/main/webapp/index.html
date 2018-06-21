@@ -9,10 +9,23 @@
 <div class="container">
     <h3>Проект Java Web Project</a></h3>
     <hr>
-    <ul>
-        <li><a href="users">Users</a></li>
-        <li><a href="pages">Pages</a></li>
-    </ul>
+    <form method="post" action="users" >
+        <div class="row">
+            <div class="col-3">
+                <div class="input-group">
+                    <select class="custom-select" name="userId">
+                        <option selected>Meals of...</option>
+                        <option value="1">User</option>
+                        <option value="2">Admin</option>
+                    </select>
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="submit">Select</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
 </div>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

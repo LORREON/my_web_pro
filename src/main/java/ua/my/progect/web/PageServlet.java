@@ -1,6 +1,5 @@
 package ua.my.progect.web;
 
-import org.slf4j.Logger;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import ua.my.progect.model.Page;
@@ -56,7 +55,6 @@ public class PageServlet extends HttpServlet {
                 break;
             case "all":
             default:
-                pageController.getAll().forEach(System.out::println);
                 request.setAttribute("pageList", pageController.getAll());
                 request.getRequestDispatcher("/pages.jsp").forward(request, response);
                 break;
@@ -73,7 +71,13 @@ public class PageServlet extends HttpServlet {
                 req.getParameter("userName"),
                 LocalDateTime.parse(req.getParameter("pageDateTime")),
                 req.getParameter("text"));
-        pageController.update(page, getId(req));
+
+        if (id.isEmpty()) {
+            pageController.create(page);
+        } else {
+            pageController.update(page, getId(req));
+        }
+
         resp.sendRedirect("pages");
     }
 
@@ -81,6 +85,5 @@ public class PageServlet extends HttpServlet {
         String paramId = Objects.requireNonNull(request.getParameter("id"));
         return Integer.valueOf(paramId);
     }
-
 
 }

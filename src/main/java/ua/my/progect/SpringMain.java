@@ -1,4 +1,4 @@
-package ua.my.progect.web;
+package ua.my.progect;
 
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

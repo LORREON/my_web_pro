@@ -42,7 +42,7 @@
             <jsp:useBean id="list" scope="page" class="ua.my.progect.model.Page" />
             <tr>
                 <td scope="col" class="text-center"><%=n++%></td>
-                <td scope="col"><%= TimeUtil.toString(list.getDateTime()) %></td>
+                <td scope="col"><%= TimeUtil.toString(list.getPageDateTime()) %></td>
                 <td scope="col"><c:out value="${list.userName}"/></td>
                 <td scope="col"><c:out value="${list.name}"/></td>
                 <td scope="col"><a href="pages?action=update&id=${list.id}">Update</a></td>

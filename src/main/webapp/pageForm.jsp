@@ -25,7 +25,7 @@
     <form method="post" action="pages">
         <div class="row">
             <div class="col-2"><input type="number" value="${npage.id}" name="id" class="form-control" placeholder="Id" readonly></div>
-            <div class="col"><input type="text" value="${npage.pageName}" name="pageName" class="form-control" placeholder="Page name"></div>
+            <div class="col"><input type="text" value="${npage.name}" name="pageName" class="form-control" placeholder="Page name"></div>
             <div class="col"><input type="text" value="${npage.userName}" name="userName" class="form-control" placeholder="User name"></div>
             <div class="col"><input type="datetime-local" value="${npage.pageDateTime}" name="pageDateTime" class="form-control" ></div>
         </div>
