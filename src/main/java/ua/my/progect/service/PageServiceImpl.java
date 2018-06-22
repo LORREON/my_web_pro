@@ -8,10 +8,7 @@ import ua.my.progect.repository.PageRepository;
 import ua.my.progect.util.exception.NotFoundException;
 
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
-import static java.util.stream.Collectors.toList;
 import static ua.my.progect.util.ValidationUtil.checkNotFoundWithId;
 
 @Service

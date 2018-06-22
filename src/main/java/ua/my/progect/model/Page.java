@@ -3,8 +3,8 @@ package ua.my.progect.model;
 
 import java.time.LocalDateTime;
 
-public class Page {
-    private Integer id;
+public class Page extends AbstractBaseEntity{
+
     private String name;
     private String userName;
     private LocalDateTime pageDateTime;
@@ -15,19 +15,11 @@ public class Page {
     }
 
     public Page(Integer id, String name, String userName, LocalDateTime pageDateTime, String text) {
-        this.id = id;
+        super(id);
         this.name = name;
         this.userName = userName;
         this.pageDateTime = pageDateTime;
         this.text = text;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -59,8 +51,5 @@ public class Page {
         this.text = text;
     }
 
-    public boolean isNew() {
-        return this.id == null;
-    }
 
 }

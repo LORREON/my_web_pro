@@ -1,6 +1,7 @@
 package ua.my.progect.repository.mock;
 
 import org.springframework.stereotype.Repository;
+import ua.my.progect.UserTestData;
 import ua.my.progect.model.User;
 import ua.my.progect.repository.UserRepository;
 
@@ -11,13 +12,22 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
+import static ua.my.progect.UserTestData.ADMIN;
+import static ua.my.progect.UserTestData.USER;
+
 @Repository
 public class InMemoryUserRepositoryImpl implements UserRepository {
-    public static final int USER_ID = 1;
-    public static final int ADMIN_ID = 2;
 
     private Map<Integer, User> repository = new ConcurrentHashMap<>();
     private AtomicInteger counter = new AtomicInteger(0);
+
+
+    public void init() {
+        repository.clear();
+        repository.put(UserTestData.USER_ID, USER);
+        repository.put(UserTestData.ADMIN_ID, ADMIN);
+    }
+
 
     @Override
     public User save(User user) {
